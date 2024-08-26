@@ -1,0 +1,16 @@
+version: "3.8"
+
+services:
+  meilisearch:
+    container_name: meilisearch
+    image: "getmeili/meilisearch:prototype-japanese-184"
+    volumes:
+      - ./meili_data:/meili_data
+    environment:
+      #meili cloudを使わない場合、マスターキーは自分で設定する
+      - MEILI_MASTER_KEY=master_key
+      - MEILI_ENV=development
+    ports:
+      #データ部分をマウント
+      - "7700:7700"
+    tty: true
